@@ -58,29 +58,31 @@ const medicamentos = {
   }
 };
 
-// 🎥 ATIVA A CÂMERA — FORMA MAIS COMPATÍVEL (ESSA FUNCIONA)
+// 🎥 ATIVAR CÂMERA — MODELO COMPATÍVEL COM WHATSAPP
 navigator.mediaDevices.getUserMedia({
-  video: {
-    facingMode: "environment"
-  }
+  video: { facingMode: "environment" },
+  audio: false
 })
 .then(stream => {
   video.srcObject = stream;
+  video.muted = true;
+  video.play();
 })
 .catch(err => {
-  alert("Não foi possível acessar a câmera. Use HTTPS.");
+  alert("Erro ao acessar a câmera. Abra pelo navegador.");
   console.error(err);
 });
 
-// 📷 DEMONSTRAÇÃO (TEXTO)
+// 📷 DEMONSTRAÇÃO (SEM OCR PARA NÃO QUEBRAR)
 function capturarImagem() {
   const texto = demoInput.value.toLowerCase();
 
-  if (texto !== "") {
-    analisarTexto(texto);
-  } else {
-    resultado.innerHTML = "Digite o nome do remédio para demonstração.";
+  if (texto === "") {
+    resultado.innerHTML = "Digite o nome do medicamento.";
+    return;
   }
+
+  analisarTexto(texto);
 }
 
 // 🔍 ANALISAR TEXTO
