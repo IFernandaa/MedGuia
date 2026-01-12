@@ -79,10 +79,11 @@ Aviso: ${med.aviso}.
   resultado.innerHTML = "❌ Medicamento não identificado.";
 }
 
-function falarTexto() {
-  if (!textoParaFalar) return;
-
-  const fala = new SpeechSynthesisUtterance(textoParaFalar);
-  fala.lang = "pt-BR";
-  window.speechSynthesis.speak(fala);
+function falar(texto) {
+  const msg = new SpeechSynthesisUtterance(texto);
+  msg.lang = "pt-BR";
+  msg.rate = 0.9;
+  msg.volume = 1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(msg);
 }
