@@ -7,31 +7,21 @@ let textoParaFalar = "";
 // BANCO DE MEDICAMENTOS
 const medicamentos = {
   dipirona: {
-    uso: "Alívio de dor e febre",
-    comoUsar: "Tomar conforme orientação médica",
-    aviso: "Evitar uso excessivo"
+    uso: "Alívio de dor e febre.",
+    comoUsar: "Tomar conforme orientação médica ou farmacêutica.",
+    aviso: "Evitar uso excessivo e em caso de alergia."
   },
+
   paracetamol: {
-    uso: "Dor e febre",
-    comoUsar: "Não ultrapassar a dose diária",
-    aviso: "Pode causar danos ao fígado"
+    uso: "Tratamento de dor leve a moderada e febre.",
+    comoUsar: "Não ultrapassar a dose diária recomendada.",
+    aviso: "Uso excessivo pode causar danos ao fígado."
   },
+
   omeprazol: {
-    uso: "Problemas gástricos",
-    comoUsar: "Tomar em jejum",
-    aviso: "Uso contínuo apenas com orientação"
-  },
-  ibuprofeno: {
-    uso: "Dor e inflamação",
-    comoUsar: "Após as refeições",
-    aviso: "Evitar em caso de gastrite"
-  },
-  losartana: {
-    uso: "Pressão alta",
-    comoUsar: "Tomar diariamente",
-    aviso: "Não interromper sem orientação médica"
-  }
-};
+    uso: "Tratamento de problemas gástricos, como refluxo e gastrite.",
+    comoUsar: "Tomar em jejum, conforme prescrição médica.",
+
 
 // 🔘 ATIVAR CÂMERA (COM CLIQUE)
 function ativarCamera() {
