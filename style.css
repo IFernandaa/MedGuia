@@ -1,52 +1,54 @@
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  text-align: center;
-  background: linear-gradient(180deg, #f8f9ff, #eaefff);
+  font-family: Arial, sans-serif;
+  background-color: #f2f6ff;
   margin: 0;
   padding: 20px;
+  text-align: center;
 }
 
 h1 {
-  font-size: 32px;
+  color: #2a4cff;
+  font-size: 30px;
 }
 
 p {
   font-size: 18px;
+  margin-bottom: 10px;
 }
 
 video {
   width: 100%;
-  max-width: 400px;
-  border-radius: 12px;
-  margin: 15px 0;
+  max-width: 420px;
+  border-radius: 16px;
+  margin: 15px auto;
   background: black;
 }
 
 button {
-  font-size: 18px;
-  padding: 14px;
-  margin: 10px auto;
   width: 90%;
-  max-width: 320px;
+  max-width: 340px;
+  padding: 15px;
+  margin: 10px auto;
+  font-size: 18px;
+  border-radius: 14px;
   border: none;
-  border-radius: 12px;
-  background-color: #2a7fff;
+  background-color: #2a4cff;
   color: white;
 }
 
 input {
   width: 90%;
-  padding: 12px;
+  max-width: 340px;
+  padding: 14px;
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  margin-top: 10px;
 }
 
 #resultado {
   background: white;
   padding: 15px;
   margin-top: 15px;
-  border-radius: 12px;
-  font-size: 18px;
+  border-radius: 14px;
+  font-size: 17px;
 }
