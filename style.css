@@ -1,7 +1,7 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   text-align: center;
-  background-color: #f4f4f4;
+  background: linear-gradient(180deg, #f8f9ff, #eaefff);
   margin: 0;
   padding: 20px;
 }
@@ -23,8 +23,8 @@ video {
 }
 
 button {
-  font-size: 20px;
-  padding: 15px;
+  font-size: 18px;
+  padding: 14px;
   margin: 10px auto;
   width: 90%;
   max-width: 320px;
@@ -32,6 +32,15 @@ button {
   border-radius: 12px;
   background-color: #2a7fff;
   color: white;
+}
+
+input {
+  width: 90%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
 }
 
 #resultado {

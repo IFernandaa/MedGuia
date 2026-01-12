@@ -1,9 +1,10 @@
 const video = document.getElementById("camera");
 const resultado = document.getElementById("resultado");
+const demoInput = document.getElementById("demoInput");
 
 let textoParaFalar = "";
 
-// Ativar câmera traseira
+// ATIVAR CÂMERA
 navigator.mediaDevices.getUserMedia({
   video: {
     facingMode: "environment",
@@ -11,8 +12,14 @@ navigator.mediaDevices.getUserMedia({
     height: { ideal: 720 }
   }
 })
+.then(stream => {
+  video.srcObject = stream;
+})
+.catch(err => {
+  alert("Erro ao acessar a câmera");
+});
 
-// Banco simples de medicamentos
+// BANCO DE MEDICAMENTOS
 const medicamentos = {
   dipirona: {
     uso: "Alívio de dor e febre",
@@ -22,16 +29,34 @@ const medicamentos = {
   paracetamol: {
     uso: "Dor e febre",
     comoUsar: "Não ultrapassar a dose diária",
-    aviso: "Evitar uso prolongado"
+    aviso: "Pode causar danos ao fígado"
   },
   omeprazol: {
     uso: "Problemas gástricos",
     comoUsar: "Tomar em jejum",
     aviso: "Uso contínuo apenas com orientação"
+  },
+  ibuprofeno: {
+    uso: "Dor e inflamação",
+    comoUsar: "Após as refeições",
+    aviso: "Evitar em caso de gastrite"
+  },
+  losartana: {
+    uso: "Controle da pressão arterial",
+    comoUsar: "Tomar diariamente no mesmo horário",
+    aviso: "Não interromper sem orientação médica"
   }
 };
 
+// CAPTURA DA IMAGEM
 function capturarImagem() {
+  // MODO DEMONSTRAÇÃO
+  const textoDigitado = demoInput.value.toLowerCase();
+  if (textoDigitado !== "") {
+    analisarTexto(textoDigitado);
+    return;
+  }
+
   const canvas = document.createElement("canvas");
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
@@ -47,13 +72,7 @@ function capturarImagem() {
     });
 }
 
-const demoText = document.getElementById("demoInput").value;
-
-if (demoText.trim() !== "") {
-  processMedicine(demoText);
-  return;
-}
-
+// ANALISAR TEXTO
 function analisarTexto(texto) {
   for (let nome in medicamentos) {
     if (texto.includes(nome)) {
@@ -79,11 +98,16 @@ Aviso: ${med.aviso}.
   resultado.innerHTML = "❌ Medicamento não identificado.";
 }
 
-function falar(texto) {
-  const msg = new SpeechSynthesisUtterance(texto);
+// VOZ
+function falarTexto() {
+  if (textoParaFalar === "") {
+    alert("Nenhuma informação para ler.");
+    return;
+  }
+
+  const msg = new SpeechSynthesisUtterance(textoParaFalar);
   msg.lang = "pt-BR";
   msg.rate = 0.9;
-  msg.volume = 1;
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(msg);
 }
