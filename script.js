@@ -4,85 +4,83 @@ const demoInput = document.getElementById("demoInput");
 
 let textoParaFalar = "";
 
-// 📚 BANCO DE MEDICAMENTOS
+// BANCO DE MEDICAMENTOS
 const medicamentos = {
   dipirona: {
     uso: "Alívio de dor e febre.",
-    comoUsar: "Tomar conforme orientação médica.",
-    aviso: "Evitar uso excessivo."
+    comoUsar: "Tomar conforme orientação médica ou farmacêutica.",
+    aviso: "Evitar uso excessivo e em caso de alergia."
   },
   paracetamol: {
-    uso: "Dor e febre.",
-    comoUsar: "Não exceder a dose diária.",
-    aviso: "Pode causar danos ao fígado."
+    uso: "Tratamento de dor leve a moderada e febre.",
+    comoUsar: "Não ultrapassar a dose diária recomendada.",
+    aviso: "Uso excessivo pode causar danos ao fígado."
   },
   omeprazol: {
-    uso: "Refluxo e gastrite.",
-    comoUsar: "Tomar em jejum.",
-    aviso: "Uso contínuo apenas com orientação."
+    uso: "Tratamento de problemas gástricos, como refluxo e gastrite.",
+    comoUsar: "Tomar em jejum, conforme prescrição médica.",
+    aviso: "Uso contínuo apenas com orientação médica."
   },
   tropinal: {
-    uso: "Cólicas e dores espasmódicas.",
-    comoUsar: "Usar conforme orientação.",
+    uso: "Alívio de dores espasmódicas e cólicas.",
+    comoUsar: "Usar conforme orientação médica ou farmacêutica.",
     aviso: "Pode causar efeitos colaterais."
   },
   tansulosina: {
     uso: "Auxilia na eliminação de cálculos renais.",
-    comoUsar: "Uma vez ao dia.",
+    comoUsar: "Tomar uma vez ao dia.",
     aviso: "Pode causar tontura."
   },
   propranolol: {
     uso: "Controle da pressão arterial.",
-    comoUsar: "Uso contínuo.",
-    aviso: "Não interromper abruptamente."
+    comoUsar: "Usar conforme prescrição médica.",
+    aviso: "Não interromper sem orientação."
   },
   loperamida: {
-    uso: "Diarreia aguda.",
-    comoUsar: "Uso pontual.",
-    aviso: "Não usar em infecções."
+    uso: "Tratamento de diarreia aguda.",
+    comoUsar: "Usar conforme orientação.",
+    aviso: "Não usar em infecções intestinais."
   },
   ciclobenzaprina: {
     uso: "Relaxante muscular.",
-    comoUsar: "Uso curto.",
-    aviso: "Causa sonolência."
+    comoUsar: "Uso por curto período.",
+    aviso: "Pode causar sonolência."
   },
   nimesulida: {
-    uso: "Dor e inflamação.",
+    uso: "Redução de dor e inflamação.",
     comoUsar: "Menor dose eficaz.",
-    aviso: "Risco hepático."
+    aviso: "Cuidado com fígado."
   },
   amoxicilina: {
-    uso: "Infecções bacterianas.",
+    uso: "Tratamento de infecções bacterianas.",
     comoUsar: "Completar o tratamento.",
-    aviso: "Somente com prescrição."
+    aviso: "Uso com prescrição médica."
   }
 };
 
-// 🎥 ATIVAR CÂMERA — MODELO COMPATÍVEL COM WHATSAPP
-navigator.mediaDevices.getUserMedia({
-  video: { facingMode: "environment" },
-  audio: false
-})
-.then(stream => {
-  video.srcObject = stream;
-  video.muted = true;
-  video.play();
-})
-.catch(err => {
-  alert("Erro ao acessar a câmera. Abra pelo navegador.");
-  console.error(err);
-});
+// 🔘 ATIVAR CÂMERA (COM CLIQUE — COMO FUNCIONAVA)
+function ativarCamera() {
+  navigator.mediaDevices.getUserMedia({
+    video: { facingMode: "environment" }
+  })
+  .then(stream => {
+    video.srcObject = stream;
+    video.play();
+  })
+  .catch(err => {
+    alert("Erro ao acessar a câmera: " + err);
+  });
+}
 
-// 📷 DEMONSTRAÇÃO (SEM OCR PARA NÃO QUEBRAR)
+// 📷 DEMONSTRAÇÃO
 function capturarImagem() {
   const texto = demoInput.value.toLowerCase();
 
-  if (texto === "") {
-    resultado.innerHTML = "Digite o nome do medicamento.";
-    return;
+  if (texto !== "") {
+    analisarTexto(texto);
+  } else {
+    resultado.innerHTML = "Digite o nome do remédio para demonstração.";
   }
-
-  analisarTexto(texto);
 }
 
 // 🔍 ANALISAR TEXTO
@@ -113,8 +111,8 @@ Aviso: ${med.aviso}.
 
 // 🔊 VOZ
 function falarTexto() {
-  if (!textoParaFalar) {
-    alert("Nenhuma informação disponível.");
+  if (textoParaFalar === "") {
+    alert("Nenhuma informação para ler.");
     return;
   }
 
