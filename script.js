@@ -4,13 +4,13 @@ const resultado = document.getElementById("resultado");
 let textoParaFalar = "";
 
 // Ativar câmera traseira
-navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-  .then(stream => {
-    video.srcObject = stream;
-  })
-  .catch(() => {
-    alert("Permissão da câmera negada.");
-  });
+navigator.mediaDevices.getUserMedia({
+  video: {
+    facingMode: "environment",
+    width: { ideal: 1280 },
+    height: { ideal: 720 }
+  }
+})
 
 // Banco simples de medicamentos
 const medicamentos = {
