@@ -40,11 +40,13 @@ function ativarCamera() {
   })
   .then(stream => {
     video.srcObject = stream;
+    video.play(); // 🔴 ISSO FAZ A CÂMERA APARECER
   })
-  .catch(() => {
-    alert("Não foi possível acessar a câmera");
+  .catch(err => {
+    alert("Erro ao acessar a câmera: " + err);
   });
 }
+
 
 // 📷 CAPTURAR / DEMO
 function capturarImagem() {
