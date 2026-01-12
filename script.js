@@ -58,31 +58,29 @@ const medicamentos = {
   }
 };
 
-// 🎥 ATIVAR CÂMERA AUTOMATICAMENTE
-window.onload = function () {
-  navigator.mediaDevices.getUserMedia({
-    video: { facingMode: "environment" }
-  })
-  .then(stream => {
-    video.srcObject = stream;
-    video.play();
-  })
-  .catch(err => {
-    alert("Erro ao acessar a câmera. Use HTTPS.");
-    console.error(err);
-  });
-};
+// 🎥 ATIVA A CÂMERA — FORMA MAIS COMPATÍVEL (ESSA FUNCIONA)
+navigator.mediaDevices.getUserMedia({
+  video: {
+    facingMode: "environment"
+  }
+})
+.then(stream => {
+  video.srcObject = stream;
+})
+.catch(err => {
+  alert("Não foi possível acessar a câmera. Use HTTPS.");
+  console.error(err);
+});
 
-// 📷 CAPTURAR OU DEMO
+// 📷 DEMONSTRAÇÃO (TEXTO)
 function capturarImagem() {
   const texto = demoInput.value.toLowerCase();
 
   if (texto !== "") {
     analisarTexto(texto);
-    return;
+  } else {
+    resultado.innerHTML = "Digite o nome do remédio para demonstração.";
   }
-
-  resultado.innerHTML = "📸 Use o campo de texto para demonstração.";
 }
 
 // 🔍 ANALISAR TEXTO
