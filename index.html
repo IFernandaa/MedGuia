@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MedGuide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>💊 MedGuia</h1>
+  <p>Apontar a câmera para o remédio</p>
+
+  <video id="camera" autoplay playsinline></video>
+
+  <button onclick="capturarImagem()">📷 Capturar imagem</button>
+
+  <div id="resultado"></div>
+
+  <button onclick="falarTexto()">🔊 Ouvir explicação</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
