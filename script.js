@@ -47,6 +47,13 @@ function capturarImagem() {
     });
 }
 
+const demoText = document.getElementById("demoInput").value;
+
+if (demoText.trim() !== "") {
+  processMedicine(demoText);
+  return;
+}
+
 function analisarTexto(texto) {
   for (let nome in medicamentos) {
     if (texto.includes(nome)) {
